@@ -1,17 +1,40 @@
-# akademik_mahasiswa
+# Akademik Mahasiswa (SIAKMHS)
 
-A new Flutter project.
+Aplikasi Flutter untuk Sistem Informasi Akademik Mahasiswa.
 
-## Getting Started
+## Cara Menjalankan Aplikasi
 
-This project is a starting point for a Flutter application.
+### 1. Install Dependencies
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+flutter pub get
+```
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### 2. Run Aplikasi
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+flutter run
+```
+
+### 3. Build Release (Opsional)
+
+```bash
+flutter build apk --release    # Android
+flutter build ios --release    # iOS
+```
+
+## Struktur Proyek
+
+```
+lib/
+├── core/              # Konfigurasi global (theme, constants)
+├── data/              # Data layer (local data source)
+├── models/            # Data models
+├── screens/           # UI screens (views)
+└── widgets/           # Reusable UI components
+```
+
+## Requirements
+
+- Flutter SDK 3.0+
+- Dart 3.0+
