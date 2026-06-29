@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'core/theme/app_theme.dart';
-import 'screens/onboarding/onboarding_screen_one.dart';
-import 'screens/onboarding/onboarding_screen_two.dart';
-import 'screens/auth/login_screen.dart';
-import 'screens/main/main_shell.dart';
+import 'screens/splash/splash_screen.dart';
+import 'screens/riwayat_pendidikan/riwayat_pendidikan_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -18,12 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'SIAKMHS_1002240018',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      initialRoute: '/',
+      home: const SplashScreen(),
       routes: {
-        '/': (context) => const OnboardingScreenOne(),
-        '/onboarding2': (context) => const OnboardingScreenTwo(),
-        '/login': (context) => const LoginScreen(),
-        '/main': (context) => const MainShell(),
+        '/riwayat-pendidikan': (context) => const RiwayatPendidikanScreen(),
       },
     );
   }

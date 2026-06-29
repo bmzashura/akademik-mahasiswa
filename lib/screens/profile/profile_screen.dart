@@ -2,9 +2,51 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_theme.dart';
 import '../../widgets/profile_header.dart';
 import '../../data/local_data.dart';
+import '../../services/auth_service.dart';
+import '../auth/login_screen.dart';
+import '../riwayat_pendidikan/riwayat_pendidikan_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
+
+  void _handleLogout(BuildContext context) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Text('Konfirmasi Logout'),
+        content: const Text('Apakah Anda yakin ingin keluar?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Batal'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppTheme.primaryColor,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            child: const Text('Logout'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      await AuthService().signOut();
+      if (context.mounted) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+          (route) => false,
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +80,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     IconButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/login');
-                      },
+                      onPressed: () => _handleLogout(context),
                       icon: const Icon(
                         Icons.logout,
                         color: Colors.white,
@@ -60,13 +100,40 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(AppTheme.spacing24),
-                    child: Column(
-                      children: [
-                        ProfileHeader(profile: LocalData.studentProfile),
-                        const SizedBox(height: 32),
-                        _buildInfoCard(),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(AppTheme.spacing24),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ProfileHeader(profile: LocalData.studentProfile),
+                          const SizedBox(height: 32),
+                          _buildInfoCard(),
+                          const SizedBox(height: 24),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 52,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const RiwayatPendidikanScreen(),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppTheme.primaryColor,
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                              child: const Text('Riwayat Pendidikan'),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

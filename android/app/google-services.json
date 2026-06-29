@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "176759910973",
+    "project_id": "akademik-mahasiswa-5e50e",
+    "storage_bucket": "akademik-mahasiswa-5e50e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176759910973:android:4623220b1b5662dd0c7054",
+        "android_client_info": {
+          "package_name": "com.itts.akademik_mahasiswa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVU77tPrwG4jRking_AlmTTY_OAw6TJ6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

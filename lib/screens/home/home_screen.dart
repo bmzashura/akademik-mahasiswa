@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              // Header with greeting
+              // Header
               Padding(
                 padding: const EdgeInsets.all(AppTheme.spacing24),
                 child: Column(
@@ -93,10 +93,7 @@ class HomeScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.pushReplacementNamed(context, '/login');
                           },
-                          icon: const Icon(
-                            Icons.logout,
-                            color: Colors.white,
-                          ),
+                          icon: const Icon(Icons.logout, color: Colors.white),
                         ),
                       ],
                     ),
@@ -178,6 +175,21 @@ class HomeScreen extends StatelessWidget {
                                   colors: [Color(0xFFE53935), Color(0xFFC62828)],
                                 ),
                               ),
+                              _buildMenuItem(
+                                context,
+                                icon: Icons.history_edu,
+                                title: 'Riwayat',
+                                color: const Color(0xFF7B1FA2),
+                                gradient: const LinearGradient(
+                                  colors: [Color(0xFF7B1FA2), Color(0xFF6A1B9A)],
+                                ),
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    '/riwayat-pendidikan',
+                                  );
+                                },
+                              ),
                             ],
                           ),
                         ),
@@ -199,9 +211,10 @@ class HomeScreen extends StatelessWidget {
     required String title,
     required Color color,
     required Gradient gradient,
+    VoidCallback? onTap,
   }) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap ?? () {},
       child: Container(
         decoration: BoxDecoration(
           gradient: gradient,
@@ -224,11 +237,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.white.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Icon(
-                icon,
-                size: 32,
-                color: Colors.white,
-              ),
+              child: Icon(icon, size: 32, color: Colors.white),
             ),
             const SizedBox(height: 12),
             Text(
