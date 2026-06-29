@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'core/theme/app_theme.dart';
 import 'screens/splash/splash_screen.dart';
+import 'screens/auth/login_screen.dart';
 import 'screens/riwayat_pendidikan/riwayat_pendidikan_screen.dart';
 
 void main() async {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.theme,
       home: const SplashScreen(),
       routes: {
+        '/login': (context) => const LoginScreen(),
         '/riwayat-pendidikan': (context) => const RiwayatPendidikanScreen(),
       },
     );
