@@ -53,7 +53,6 @@ lib/
 - **Profil**: Menampilkan profil mahasiswa
 - **Jadwal**: Menampilkan jadwal perkuliahan
 - **Riwayat Pendidikan**: Riwayat pendidikan mahasiswa dari Firestore
-- **Onboarding**: Screens untuk新生 orientasi
 
 ## Teknologi
 
